@@ -49,5 +49,3 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagn
 -- Clipboard
 vim.keymap.set({ "n", "x" }, "<leader>cc", '"+y', { desc = "Copy" })
 vim.keymap.set({ "n", "x" }, "<leader>pp", '"+p', { desc = "Paste" })
-
-vim.cmd.colorscheme("retrobox")
