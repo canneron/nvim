@@ -3,6 +3,18 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
+		
+		lint.linters.golangci_lint = {
+		cmd = "golangci-lint",
+		args = { "run", "--out-format", "line-number" },
+		stdin = false,
+		ignore_exitcode = true,
+		parser = require("lint.parser").from_pattern(
+				[[[^:]+:(%d+):(%d+): (.*)]],
+				{ "lnum", "col", "message" },
+				{ source = "golangci-lint" }
+			),
+		}
 
 		-- Add Go and Java linters
 		lint.linters_by_ft = {
